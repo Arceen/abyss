@@ -1,0 +1,154 @@
+:root {
+  --connector-color: #aaa;
+}
+
+.root {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+}
+.root,
+.child,
+.item {
+  transition: 0.3s;
+}
+.root > .item {
+  border: 1px dashed black;
+}
+.item {
+  position: relative;
+  text-align: center;
+  min-width: 100px;
+  margin: 0px 10px;
+  margin-right: 60px;
+  margin-left: 60px;
+  padding: 10px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.val {
+  align-self: center;
+  flex: 1;
+  text-align: center;
+  width: 100%;
+  border: 0px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+input:focus {
+  color: black;
+}
+img {
+  cursor: pointer;
+}
+.root > .item > .val {
+  color: black;
+}
+.controls {
+  position: absolute;
+  right: 0;
+  height: 30px;
+  width: 50px;
+  transform: translateX(110%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.children {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.child {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.child::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 20px;
+  border-top: 1px solid var(--connector-color);
+  border-right: 1px solid var(--connector-color);
+  transform: translateY(-100%);
+}
+.child::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 20px;
+  right: 0;
+  top: 0;
+  border-top: 1px solid var(--connector-color);
+  transform: translateY(-100%);
+}
+
+.item::after {
+  content: "";
+  width: 1px;
+  background-color: var(--connector-color);
+  height: 20px;
+  position: absolute;
+
+  bottom: 0;
+  left: 50%;
+  transform: translate(0px, 100%);
+}
+.child > .item:only-child::after {
+  content: "";
+  height: 0px;
+}
+
+.child:first-child::before {
+  display: none;
+}
+.child::before {
+}
+.child:last-child::after {
+  display: none;
+}
+.child:last-child::before {
+  border-radius: 0 5px 0 0;
+}
+
+.child:first-child::after {
+  border-left: 1px solid var(--connector-color);
+  border-radius: 5px 0 0 0;
+}
+
+.controls > img {
+  height: 16px;
+  width: 16px;
+  object-fit: cover;
+}
+.delete-icon {
+  border-radius: 50%;
+}
+
+.children > .child:only-child::after {
+  content: "";
+  height: 21px;
+  display: block;
+  position: absolute;
+  border-top: 0px;
+  border-radius: 0px;
+  left: 50%;
+}
+input {
+  outline: none;
+  color: #8f8f8f;
+
+  font-family: "Roboto", sans-serif;
+}
+
+.root > .item:only-child::after {
+  display: none;
+}
